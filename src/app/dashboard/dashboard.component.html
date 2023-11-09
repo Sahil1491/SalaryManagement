@@ -1,0 +1,105 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [opened]="isSidenavOpen">
+    <mat-nav-list>
+      <a mat-list-item (click)="showReportOptions = true; showRecordOptions = false">Report</a>
+      <a mat-list-item (click)="showRecordsGrid()">Records</a>
+      <a mat-list-item (click)="logout()">Log Out</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Welcome to our Services</span>
+    </mat-toolbar>
+
+    <div *ngIf="showReportOptions" class="button-dropdowns">
+      <!-- Report Content -->
+      <mat-form-field>
+        <mat-label>Select Month</mat-label>
+        <mat-select [(ngModel)]="selectedMonth">
+          <mat-option *ngFor="let month of months" [value]="month">{{month}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Select Employee</mat-label>
+        <mat-select [(ngModel)]="selectedEmployee">
+          <mat-option *ngFor="let employee of employeeData" [value]="employee.id">{{employee.employeeName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="show-report-button-container">
+        <button mat-raised-button color="primary" (click)="generateReport()">Show Report</button>
+      </div>
+
+      <div *ngIf="showReportGrid">
+        <!-- Grid to display the report -->
+        <table>
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>Month</th>
+              <th>Daily Salary</th>
+              <th>Leaves</th>
+              <th>Deductions</th>
+              <th>Net Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ selectedEmployeeName }}</td>
+              <td>{{ selectedMonth }}</td>
+              <td>{{ dailySalary }}</td>
+              <td>{{ Leaves }}</td>
+              <td>{{ deductions }}</td>
+              <td>{{ netSalary }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div *ngIf="showRecordOptions" class="button-dropdowns">
+      <!-- Records Content -->
+      <mat-form-field>
+        <mat-label>Employee Name</mat-label>
+        <mat-select [(ngModel)]="selectedEmployee">
+          <mat-option *ngFor="let employee of employeeData" [value]="employee.id">{{employee.employeeName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="show-record-button-container">
+        <button mat-raised-button color="primary" (click)="showRecordsGrid()">Show Data</button>
+      </div>
+
+      <div *ngIf="showRecordGrid">
+        <!-- Grid to display employee data -->
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Month</th>
+              <th>Leaves</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of recordData">
+              <td>{{ record.id }}</td>
+              <td>{{ record.name }}</td>
+              <td>{{ record.role }}</td>
+              <td>{{ record.month }}</td>
+              <td>{{ record.Leaves }}</td>
+              <td>{{ record.salary }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

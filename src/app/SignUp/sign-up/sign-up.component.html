@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <form class="signup-form">
+        <h1>Signup-form</h1>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password" [(ngModel)]="Password" name="Password" required>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ConfirmPassword" [(ngModel)]="ConfirmPassword" name="ConfirmPassword" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="submitForm()">Sign Up</button>
+      <h3 class="already-account"><a routerLink="/login"> Already Have an Account? Login</a></h3>
+
+    </form>
+  </div>
+  

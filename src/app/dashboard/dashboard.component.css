@@ -1,0 +1,123 @@
+.sidenav-container {
+    height: 100vh;
+    display: flex;
+}
+
+.sidenav {
+    min-width: 20%; /* Set a minimum width to avoid collapsing */
+    width: 30%; /* Adjust the width based on your preference */
+    max-width: 350px; /* Set a maximum width for larger screens */
+    background: #c86f6f; /* Your desired color */
+    overflow-y: auto;
+    color: #fff; /* Text color for sidenav */
+}
+
+.mat-nav-list a {
+    text-decoration: none;
+    color: #fff; /* Link color in sidenav */
+    display: block;
+    padding: 12px 20px; /* Adjust padding for better clickability */
+    transition: background-color 0.3s; /* Smooth transition effect */
+}
+
+.mat-nav-list a:hover {
+    background: #a65050; /* Change background color on hover */
+}
+
+.mat-sidenav-content {
+    padding: 20px;
+    flex: 1; /* Allow content area to grow and fill the remaining space */
+    box-sizing: border-box;
+}
+
+mat-toolbar {
+    background: #FFCC33; /* Your desired color */
+    color: #000; /* Text color for toolbar */
+}
+/* Set the height of the sidenav container to fill the viewport */
+.mat-sidenav-container {
+    height: 100vh;
+    display: flex;
+  }
+  
+  /* Set the width of the sidenav, add background color, and some additional styles */
+  .mat-sidenav {
+    width: 250px;
+    background: #dcdae3;
+    overflow-y: auto; /* Add scroll if content exceeds sidenav height */
+  }
+  
+  /* Remove the default underline from links and set link color */
+  .mat-nav-list a {
+    text-decoration: none;
+    color: #333;
+    display: block; /* Display links as blocks to expand to full width */
+    padding: 10px; /* Add padding for links */
+    transition: all 0.3s; /* Add a smooth transition effect on hover */
+  }
+  
+  /* Change background color on link hover and adjust text color */
+  .mat-nav-list a:hover {
+    background: #ddd;
+    color: #000;
+  }
+  
+  /* Add padding for content area, fill available height, and include padding in the height calculation */
+  .mat-sidenav-content {
+    padding: 20px;
+    flex: 1; /* Allow content area to grow and fill the remaining space */
+    box-sizing: border-box; /* Include padding in the height calculation */
+  }
+
+  
+  .show-report-button-container {
+    margin-left: 150px;
+    margin-bottom: 20px; /* Adds space below the button */
+  }
+
+  /*Grid design*/
+  /* Add your styles to dashboard.component.css */
+
+.sidenav-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Style for the toolbar */
+.mat-toolbar {
+  background-color: #1976D2; /* Change the background color as desired */
+  color: #fff;
+}
+
+/* Style for the button containers */
+.button-dropdowns {
+  margin: 20px; /* Adjust the margin as needed */
+}
+
+.show-report-button-container,
+.show-record-button-container {
+  margin-top: 10px; /* Adjust the top margin as needed */
+}
+
+/* Style for the buttons */
+button {
+  margin: 5px;
+}
+
+/* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd; /* Border style */
+  padding: 8px; /* Padding for cells */
+  text-align: left; /* Align text to the left */
+}
+
+th {
+  background-color: #f2f2f2; /* Background color for table headers */
+}
