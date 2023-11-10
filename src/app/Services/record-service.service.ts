@@ -1,3 +1,5 @@
+// record-service.service.ts
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,11 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class RecordServiceService {
   baseUrl = "https://localhost:7260/api/Record/";
-  
 
   constructor(private http: HttpClient) {}
 
-  getAllRecords() {
-    return this.http.get(this.baseUrl + 'GetAllRecord');
+  getAllRecords(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + 'GetAllRecord');
   }
 }

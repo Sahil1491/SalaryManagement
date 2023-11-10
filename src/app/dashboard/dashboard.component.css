@@ -30,9 +30,23 @@
     box-sizing: border-box;
 }
 
-mat-toolbar {
-    background: #FFCC33; /* Your desired color */
-    color: #000; /* Text color for toolbar */
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between; /* Align items to both ends */
+  background: #FFCC33;
+  color: #000;
+}
+
+.spacer {
+  flex-grow: 1; /* Allow the spacer to grow and push the logout button to the right */
+}
+
+.logout-button {
+  font-size: 15px;
+  color: #fff;
+  background-color: #1976D2;
+  border: #000000;
+  margin-left: 10px; /* Adjust margin as needed */
 }
 /* Set the height of the sidenav container to fill the viewport */
 .mat-sidenav-container {

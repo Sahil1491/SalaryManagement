@@ -1,20 +1,15 @@
 <app-navbar></app-navbar>
 
-
 <div class="container">
-    
-    <form class="login-form" #loginForm="ngForm" (ngSubmit)="login()">
-        <h2>Login</h2>
-      <mat-form-field>
-       
-        <input matInput type="email" placeholder="Email" name="email" ngModel required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" name="password" ngModel required>
-      </mat-form-field>
-      <button mat-raised-button color="primary"  type="submit">Login</button>
-      <h3 class="create-account"><a routerLink="/Signup"> Create a Account? SignUp</a></h3>
-
-    </form>
-  </div>
-  
+  <form class="login-form" #loginForm="ngForm" (ngSubmit)="login()">
+    <h2>Login</h2>
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="email" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Login</button>
+    <h3 class="create-account"><a routerLink="/Signup"> Create an Account? SignUp</a></h3>
+  </form>
+</div>
