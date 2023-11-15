@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url(./../../../assets/SMS.jpg);
+    background-size: cover;
+    background-position: center;
   }
   
   .signup-form {
@@ -15,6 +18,7 @@
     display: flex;
     flex-direction: column; /* Align form fields in a column */
     gap: 15px; /* Add space between form fields */
+    background-color: rgb(233, 226, 216);
   }
   .signup-form h1 {
     text-align: center; /* Align text in h1 to the center */
