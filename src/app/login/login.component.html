@@ -1,15 +1,25 @@
-
-
 <div class="container">
   <form class="login-form" #loginForm="ngForm" (ngSubmit)="login()">
-    <h2>Login</h2>
-    <mat-form-field>
-      <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="email" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password" required>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Login</button>
-    <h3 class="create-account"><a routerLink="/Signup"> Create an Account? SignUp</a></h3>
+      <h2>Login</h2>
+      <mat-form-field>
+          <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="email" required email>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('email') && loginForm.controls['email'].touched">
+              Please enter a valid email address.
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched">
+              Email is required.
+          </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password" required minlength="6">
+          <mat-error *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+              Password is required.
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['password'].hasError('minlength') && loginForm.controls['password'].touched">
+              Password must be at least 6 characters.
+          </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+      <h3 class="create-account"><a routerLink="/Signup"> Create an Account? SignUp</a></h3>
   </form>
 </div>

@@ -1,23 +1,40 @@
-
 <div class="container">
-    <form class="signup-form">
-        <h1>Signup-form</h1>
+  <form class="signup-form" #signupForm="ngForm">
+      <h1>Signup-form</h1>
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
+          <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
       </mat-form-field>
+
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+          <input matInput placeholder="Email" [(ngModel)]="email" name="email" required email>
+          <mat-error *ngIf="signupForm.controls['email'].hasError('email') && signupForm.controls['email'].touched">
+              Please enter a valid email address.
+          </mat-error>
+          <mat-error *ngIf="signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched">
+              Email is required.
+          </mat-error>
       </mat-form-field>
+
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password" [(ngModel)]="Password" name="Password" required>
+          <input matInput placeholder="Password" [(ngModel)]="Password" name="Password" required minlength="6">
+          <mat-hint align="end">{{ signupForm.controls['Password'].value?.length }}/6 characters</mat-hint>
+          <mat-error *ngIf="signupForm.controls['Password'].hasError('required') && signupForm.controls['Password'].touched">
+              Password is required.
+          </mat-error>
+          <mat-error *ngIf="signupForm.controls['Password'].hasError('minlength') && signupForm.controls['Password'].touched">
+              Password must be at least 6 characters.
+          </mat-error>
       </mat-form-field>
+
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="ConfirmPassword" [(ngModel)]="ConfirmPassword" name="ConfirmPassword" required>
+          <input matInput placeholder="ConfirmPassword" [(ngModel)]="ConfirmPassword" name="ConfirmPassword" required>
+          <mat-error *ngIf="signupForm.controls['ConfirmPassword'].hasError('required') && signupForm.controls['ConfirmPassword'].touched">
+              Confirm Password is required.
+          </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="submitForm()">Sign Up</button>
+
+      <button mat-raised-button color="primary" [disabled]="signupForm.invalid" (click)="submitForm()">Sign Up</button>
+
       <h3 class="already-account"><a routerLink="/login"> Already Have an Account? Login</a></h3>
-
-    </form>
-  </div>
-
-  
+  </form>
+</div>

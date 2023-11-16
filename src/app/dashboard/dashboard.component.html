@@ -14,8 +14,6 @@
       <button class="logout-button" (click)="logout()">Log Out</button>
     </mat-toolbar>
 
-   
-
     <div *ngIf="showReportOptions" class="button-dropdowns">
       <!-- Report Content -->
       <mat-form-field>
@@ -37,22 +35,24 @@
         <table>
           <thead>
             <tr>
+              <th>EmployeeID</th>
               <th>Employee Name</th>
-              <th>Month</th>
-              <th>Daily Salary</th>
+              <th>Salary Month</th>
+              <th>Salary</th>
               <th>Leaves</th>
               <th>Deductions</th>
-              <th>Net Salary</th>
+              <th>Net Pay</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let record of reportData">
+              <td>{{ selectedEmployee.id }}</td>
               <td>{{ selectedEmployee.firstName }}</td>
-              <td>{{ selectedMonth }}</td>
-              <td>{{ dailySalary }}</td>
-              <td>{{ Leaves }}</td>
-              <td>{{ deductions }}</td>
-              <td>{{ netSalary }}</td>
+              <td>{{ record.salaryMonth }}</td>
+              <td>{{ record.salary }}</td>
+              <td>{{ record.leaves }}</td>
+              <td>{{ record.deductions }}</td>
+              <td>{{ record.netPay }}</td>
             </tr>
           </tbody>
         </table>

@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-
 import { EmployeeServiceService } from '../Services/employee-service.service';
 
 @Component({
@@ -23,6 +22,7 @@ export class DashboardComponent {
   showReportOptions: boolean = false;
   showReportGrid: boolean = false;
   months: string[] = [];
+  reportData: any[] = [];
 
   constructor(
     private router: Router,
@@ -35,24 +35,21 @@ export class DashboardComponent {
     this.employeeService.getAllEmployees().subscribe(
       (data: any[]) => {
         this.employeeData = data;
-        console.log(this.employeeData);
       },
       error => {
         console.error('Error fetching employees:', error);
-        // Handle error in a way suitable for your application
       }
     );
 
     this.employeeService.getMonths().subscribe(
       (months: string[]) => {
         this.months = months;
-        console.log(this.months);
       },
       error => {
         console.error('Error fetching months:', error);
-        // Handle error in a way suitable for your application
       }
     );
+    
   }
 
   toggleSidenav(): void {
@@ -69,12 +66,16 @@ export class DashboardComponent {
 
   generateReport() {
     if (this.selectedMonth && this.selectedEmployee.id) {
-      this.selectedEmployeeName = this.employeeData.find(employee => employee.id === this.selectedEmployee.id)?.firstName || '';
-      this.dailySalary = 300;
-      this.Leaves = 0;
-      this.deductions = this.Leaves * this.dailySalary;
-      this.netSalary = 30000 - this.dailySalary - this.deductions;
-      this.showReportGrid = true;
+      // Fetch salary-related data based on selected employee and month
+      this.employeeService.getSalaryData(this.selectedMonth, this.selectedEmployee.id).subscribe(
+        (data: any[]) => {
+          this.reportData = data;
+          this.showReportGrid = true;
+        },
+        (error: any) => {
+          console.error('Error fetching salary data:', error);
+        }
+      );
     }
   }
-}
+}  
