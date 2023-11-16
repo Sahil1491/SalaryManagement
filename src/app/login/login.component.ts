@@ -25,6 +25,7 @@ export class LoginComponent {
     })
     if (error) {
       this.errorMessage = 'Invalid email or password';
+      alert('Invalid email or password');
     } else {
       // Navigate to the dashboard upon successful login
       this.router.navigate(['/dashboard']);
