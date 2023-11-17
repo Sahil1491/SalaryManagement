@@ -32,6 +32,7 @@ export class DashboardComponent {
   isSidenavOpen: boolean = false;
 
   ngOnInit(): void {
+   
     this.employeeService.getAllEmployees().subscribe(
       (data: any[]) => {
         this.employeeData = data;
@@ -66,6 +67,7 @@ export class DashboardComponent {
 
   generateReport() {
     if (this.selectedMonth && this.selectedEmployee.id) {
+      debugger
       // Fetch salary-related data based on selected employee and month
       this.employeeService.getSalaryData(this.selectedMonth, this.selectedEmployee.id).subscribe(
         (data: any[]) => {

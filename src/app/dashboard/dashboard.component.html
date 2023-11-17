@@ -1,6 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [opened]="isSidenavOpen">
     <mat-nav-list>
+      
+      <div class="logo-container">
+        <!-- Add your logo image path and alt text -->
+        <img src="./../../assets/LOGO.png" alt="Logo" class="logo-image">
+      </div>
       <a mat-list-item (click)="showReportOptions = true; showRecordOptions = false">Report</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -10,9 +15,12 @@
       <button mat-icon-button (click)="toggleSidenav()">
         <mat-icon>menu</mat-icon>
       </button>
+   
       <span>Salary Report</span>
       <button class="logout-button" (click)="logout()">Log Out</button>
     </mat-toolbar>
+
+      
 
     <div *ngIf="showReportOptions" class="button-dropdowns">
       <!-- Report Content -->
@@ -62,3 +70,5 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+

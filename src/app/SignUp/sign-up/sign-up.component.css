@@ -1,28 +1,33 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color:thistle;
 
-  }
-  
-  .signup-form {
-    width: 500px;
-    padding: 20px;
-    border: 1px solid #ccccccd0;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 50px auto; /* Centering the form horizontally */
-    display: flex;
-    flex-direction: column; /* Align form fields in a column */
-    gap: 15px; /* Add space between form fields */
-    background-color: rgb(233, 226, 216);
-  }
-  .signup-form h1 {
-    text-align: center; /* Align text in h1 to the center */
-    margin: 0; /* Remove default margin */
+}
+
+.signup-form {
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #ccccccd0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  /* Centering the form horizontally */
+  display: flex;
+  flex-direction: column;
+  /* Align form fields in a column */
+  gap: 15px;
+  /* Add space between form fields */
+  background-color: rgb(186, 184, 181);
+}
+
+.signup-form h1 {
+  text-align: center;
+  /* Align text in h1 to the center */
+  margin: 0;
+  /* Remove default margin */
 }
 
 
