@@ -68,7 +68,7 @@ export class DashboardComponent {
   generateReport() {
     if (this.selectedMonth && this.selectedEmployee.id) {
       debugger
-      // Fetch salary-related data based on selected employee and month
+    
       this.employeeService.getSalaryData(this.selectedMonth, this.selectedEmployee.id).subscribe(
         (data: any[]) => {
           this.reportData = data;
@@ -80,4 +80,5 @@ export class DashboardComponent {
       );
     }
   }
+  
 }  

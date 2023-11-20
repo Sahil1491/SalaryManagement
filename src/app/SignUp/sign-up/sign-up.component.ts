@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { createClient } from '@supabase/supabase-js';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,13 +16,15 @@ export class SignUpComponent {
   supabase = createClient('https://wyxysfsyaljozlbffyib.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind5eHlzZnN5YWxqb3psYmZmeWliIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTc3NzY2ODIsImV4cCI6MjAxMzM1MjY4Mn0.dN1vQjjA9lFeF1aYKGHHDkDwa0Ux_GXd9PwWEHep0-8')
 
   
+  constructor(private router: Router) { }
 
+  
   async submitForm() {
     try {
-      // Check if passwords match
+      
       if (this.Password !== this.ConfirmPassword) {
         console.error('Passwords do not match');
-        // Handle password mismatch (e.g., show an error to the user)
+       
         return;
       }
 
@@ -37,17 +40,23 @@ export class SignUpComponent {
       } else {
         console.log('User signed up:', data.user);
 
-        // Update the user profile with additional information (name in this case)
-        const { data: updatedUser, error: updateError } = await this.supabase
+        // Insert user information into the 'users' table
+        const { data: insertedUser, error: insertError } = await this.supabase
           .from('users')
-          .update({ name: this.name })
-          .eq('id', data.user?.id);
+          .insert([
+            {
+              id: data.user?.id,
+              name: this.name,
+              email: this.email,
+              password: this.Password,
+            }
+          ]);
 
-        if (updateError) {
-          console.error('Error updating user profile:', updateError);
-          // Handle error updating user profile
+        if (insertError) {
+          console.error('Error inserting user information:', insertError);
+          // Handle error inserting user information
         } else {
-          console.log('User profile updated:', updatedUser);
+          console.log('User information inserted:', insertedUser);
           // Handle successful signup and profile update
         }
       }

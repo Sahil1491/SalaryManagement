@@ -1,0 +1,39 @@
+<!-- add-report.component.html -->
+<button mat-raised-button color="primary" (click)="openAddReportGrid()">Add Report</button>
+
+<div *ngIf="showAddReportGrid">
+  <!-- Grid to add a new salary record -->
+  <form [formGroup]="newSalaryRecordForm" (ngSubmit)="addSalaryRecord()">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" required>
+    </div>
+    <div>
+      <label for="role">Role:</label>
+      <input type="text" id="role" formControlName="role" required>
+    </div>
+    <div>
+      <label for="salaryMonth">Salary Month:</label>
+      <input type="text" id="salaryMonth" formControlName="salaryMonth" required>
+    </div>
+    <div>
+      <label for="salary">Salary:</label>
+      <input type="number" id="salary" formControlName="salary" required>
+    </div>
+    <div>
+      <label for="leaves">Leaves:</label>
+      <input type="number" id="leaves" formControlName="leaves" required>
+    </div>
+    <div>
+      <label for="deductions">Deductions:</label>
+      <input type="number" id="deductions" formControlName="deductions" required>
+    </div>
+    <div>
+      <label for="netPay">Net Pay:</label>
+      <input type="number" id="netPay" formControlName="netPay" required>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

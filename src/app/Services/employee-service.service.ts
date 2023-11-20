@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeeServiceService {
-  private baseUrl = 'https://localhost:7126/api/Report'; // Update with your actual API base URL
+  private baseUrl = 'https://localhost:7126/api/Report'; 
 
   constructor(private http: HttpClient) { }
 
@@ -20,9 +20,13 @@ export class EmployeeServiceService {
     return this.http.get<any[]>(url);
   }
 
-  // Add a new method to fetch salary-related data
+  
   getSalaryData(month: string, employeeId: number): Observable<any[]> {
     const url = `${this.baseUrl}/salary-records/${month}/${employeeId}`;
     return this.http.get<any[]>(url);
+  }
+  addSalaryRecord(salaryRecord: any): Observable<any> {
+    const url = `${this.baseUrl}/add-salary-record`;
+    return this.http.post<any>(url, salaryRecord);
   }
 }

@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddReportComponent } from './add-report/add-report.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpComponent,
     LoginComponent,
     DashboardComponent,
+    AddReportComponent,
    
   
  
