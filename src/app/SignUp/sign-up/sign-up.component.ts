@@ -19,7 +19,7 @@ export class SignUpComponent {
   constructor(private router: Router) { }
 
   
-  async submitForm() {
+  async submitForm() { debugger
     try {
       
       if (this.Password !== this.ConfirmPassword) {
@@ -42,13 +42,12 @@ export class SignUpComponent {
 
         // Insert user information into the 'users' table
         const { data: insertedUser, error: insertError } = await this.supabase
-          .from('users')
+          .from('SignUp')
           .insert([
             {
-              id: data.user?.id,
-              name: this.name,
-              email: this.email,
-              password: this.Password,
+              Name: this.name,
+              Email: this.email,
+              Password: this.Password,
             }
           ]);
 
@@ -66,5 +65,6 @@ export class SignUpComponent {
     }
 
     alert('Verification is sent to your email');
+    this.router.navigate(['/login']);
   }
 }

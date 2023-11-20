@@ -147,3 +147,12 @@ th {
   height: 50%;
 }
 
+.background-image {
+ background-image: url('./../../assets/aa_files/banknote-16832_640.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%; /* Adjust the height as needed */
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+}
