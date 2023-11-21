@@ -4,9 +4,10 @@
       <h1>Signup-form</h1>
       <mat-form-field class="example-full-width input-box">
         <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
-        <mat-error *ngIf="signupForm.controls['name'].hasError('name') && signupForm.controls['name'].touched">
-          Please enter your name.
-        </mat-error>
+        <mat-error
+        *ngIf="signupForm.controls['name'].hasError('required') && signupForm.controls['name'].touched">
+        Name is required.
+      </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width input-box">
