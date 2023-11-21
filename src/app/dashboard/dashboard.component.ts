@@ -12,7 +12,7 @@ export class DashboardComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   employeeData: any[] = [];
   showRecordOptions: boolean = false;
-  selectedEmployee: { id: number, firstName: string } = { id: 0, firstName: '' };
+  selectedEmployee: { id: number, employeeName: string } = { id: 0, employeeName: '' };
   selectedMonth: string = '';
   selectedEmployeeName: string = '';
   Leaves: number = 0;
@@ -62,12 +62,14 @@ export class DashboardComponent {
     const confirmLogout = confirm("Are you sure you want to log out?");
     if (confirmLogout) {
       this.router.navigate(['/login']);
+
+      history.replaceState('', '', '/login');
     }
   }
 
   generateReport() {
+ 
     if (this.selectedMonth && this.selectedEmployee.id) {
-      debugger
     
       this.employeeService.getSalaryData(this.selectedMonth, this.selectedEmployee.id).subscribe(
         (data: any[]) => {

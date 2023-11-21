@@ -79,18 +79,18 @@
  
   .mat-sidenav-content {
     padding: 20px;
-    flex: 1; /* Allow content area to grow and fill the remaining space */
-    box-sizing: border-box; /* Include padding in the height calculation */
+    flex: 1;
+    box-sizing: border-box; 
   }
 
   
   .show-report-button-container {
     margin-left: 150px;
-    margin-bottom: 20px; /* Adds space below the button */
+    margin-bottom: 20px; 
   }
 
   /*Grid design*/
-  /* Add your styles to dashboard.component.css */
+
 
 .sidenav-container {
   display: flex;
@@ -99,26 +99,25 @@
 
 /* Style for the toolbar */
 .mat-toolbar {
-  background-color: #1976D2; /* Change the background color as desired */
+  background-color: #1976D2; 
   color: #fff;
 }
 
-/* Style for the button containers */
+
 .button-dropdowns {
-  margin: 20px; /* Adjust the margin as needed */
-}
+  margin: 20px; 
+ }
 
 .show-report-button-container,
 .show-record-button-container {
-  margin-top: 10px; /* Adjust the top margin as needed */
+  margin-top: 10px; 
 }
 
-/* Style for the buttons */
+
 button {
   margin: 5px;
 }
 
-/* Style for the table */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -151,7 +150,7 @@ th {
  background-image: url('./../../assets/aa_files/banknote-16832_640.jpg');
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100%; /* Adjust the height as needed */
+  height: 100%; 
   position: fixed;
   width: 100%;
   z-index: -1;
