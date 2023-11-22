@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { createClient } from '@supabase/supabase-js';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,23 +17,25 @@ export class LoginComponent {
 
   supabase = createClient('https://wyxysfsyaljozlbffyib.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind5eHlzZnN5YWxqb3psYmZmeWliIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTc3NzY2ODIsImV4cCI6MjAxMzM1MjY4Mn0.dN1vQjjA9lFeF1aYKGHHDkDwa0Ux_GXd9PwWEHep0-8')
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private toastr: ToastrService) {}
    async login() {
-    debugger;
+  
     const { data, error } = await this.supabase.auth.signInWithPassword({
       email: this.email,
       password: this.password,
     })
     if (error) {
       this.errorMessage = 'Invalid email or password';
-      alert('Invalid email or password');
+      this.toastr.error('Invalid Email or Password');
     } else {
-      // Navigate to the dashboard upon successful login
+      this.toastr.success('Login Successfull');
       this.router.navigate(['/dashboard']);
     }
   } catch (error: any) {
     console.error('Login error:', error);
     this.errorMessage = 'An error occurred during login';
   }
+ 
 }
+
 

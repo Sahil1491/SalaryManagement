@@ -26,5 +26,9 @@ export class EmployeeServiceService {
     return this.http.get<any[]>(url);
   }
   
+  getSalaryDataForMonth(month: string,): Observable<any[]> {
+    const url = `${this.baseUrl}/salary-records/${month}`;
+    return this.http.get<any[]>(url);
+  }
 
 }

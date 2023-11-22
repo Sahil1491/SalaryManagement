@@ -3,15 +3,19 @@
     <form class="signup-form" #signupForm="ngForm">
       <h1>Signup-form</h1>
       <mat-form-field class="example-full-width input-box">
-        <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
+        <input matInput placeholder="Name*" [(ngModel)]="name" name="name" required pattern="[a-zA-Z ]{2,35}">
         <mat-error
-        *ngIf="signupForm.controls['name'].hasError('required') && signupForm.controls['name'].touched">
-        Name is required.
-      </mat-error>
+          *ngIf="signupForm.controls['name'].hasError('required') && signupForm.controls['name'].touched">
+          Name is required.
+        </mat-error>
+        <mat-error
+          *ngIf="signupForm.controls['name'].hasError('pattern') && signupForm.controls['name'].touched">
+          Name must be between 2 and 35 characters and only contain alphabets.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width input-box">
-        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required email>
+        <input matInput placeholder="Email*" [(ngModel)]="email" name="email" required email>
         <mat-error *ngIf="signupForm.controls['email'].hasError('email') && signupForm.controls['email'].touched">
           Please enter a valid email address.
         </mat-error>
@@ -21,8 +25,8 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width input-box">
-        <input matInput type="Password" placeholder="Password" [(ngModel)]="Password" name="Password" required
-          minlength="6">
+        <input matInput type="Password" placeholder="Password*" [(ngModel)]="Password" name="Password" required
+          minlength="6" pattern="^(?=.*[a-zA-Z])(?=.*[0-9!@#$%^&*])[A-Za-z\d@$!%*?&]{6,}$">
         <mat-hint align="end">{{ signupForm.controls['Password'].value?.length }}/6 characters</mat-hint>
         <mat-error
           *ngIf="signupForm.controls['Password'].hasError('required') && signupForm.controls['Password'].touched">
@@ -32,14 +36,22 @@
           *ngIf="signupForm.controls['Password'].hasError('minlength') && signupForm.controls['Password'].touched">
           Password must be at least 6 characters.
         </mat-error>
+        <mat-error
+          *ngIf="signupForm.controls['Password'].hasError('pattern') && signupForm.controls['Password'].touched">
+          Password must contain at least one uppercase letter and one alphanumeric or special character.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width input-box">
-        <input matInput type="password" placeholder="ConfirmPassword" [(ngModel)]="ConfirmPassword"
+        <input matInput type="password" placeholder="ConfirmPassword*" [(ngModel)]="ConfirmPassword"
           name="ConfirmPassword" required>
         <mat-error
           *ngIf="signupForm.controls['ConfirmPassword'].hasError('required') && signupForm.controls['ConfirmPassword'].touched">
           Confirm Password is required.
+        </mat-error>
+        <mat-error
+          *ngIf="ConfirmPassword !== Password && signupForm.controls['ConfirmPassword'].touched">
+          Password and Confirm Password do not match.
         </mat-error>
       </mat-form-field>
 

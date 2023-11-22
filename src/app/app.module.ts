@@ -18,6 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -32,9 +35,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule, MatButtonModule, MatToolbarModule, FormsModule, MatInputModule,
     MatListModule, MatButtonToggleModule, MatFormFieldModule, MatSelectModule, ReactiveFormsModule,
-    MatSidenavModule,
+    MatSidenavModule,MatProgressSpinnerModule,MatTableModule,ToastrModule.forRoot(),
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

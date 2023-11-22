@@ -1,7 +1,9 @@
 <div class="back">
 <div class="container">
   <form class="login-form" #loginForm="ngForm" (ngSubmit)="login()">
+  
       <h2>Login</h2>
+  
       <mat-form-field>
           <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="email" required email>
           <mat-error *ngIf="loginForm.controls['email'].hasError('email') && loginForm.controls['email'].touched">

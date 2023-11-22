@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { createClient } from '@supabase/supabase-js';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,13 +18,13 @@ export class SignUpComponent {
   supabase = createClient('https://wyxysfsyaljozlbffyib.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind5eHlzZnN5YWxqb3psYmZmeWliIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTc3NzY2ODIsImV4cCI6MjAxMzM1MjY4Mn0.dN1vQjjA9lFeF1aYKGHHDkDwa0Ux_GXd9PwWEHep0-8')
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private toastr: ToastrService) { }
 
 
   async submitForm() {
     try {
       if (this.Password !== this.ConfirmPassword) {
-        console.error('Passwords do not match');
+      this.toastr.error('Passwords do not match');
 
         return;
       }
@@ -50,10 +51,11 @@ export class SignUpComponent {
               Password: this.Password,
             }
           ]);
+          
 
         if (insertError) {
           console.error('Error inserting user information:', insertError);
-          // Handle error inserting user information
+          
         } else {
           console.log('User information inserted:', insertedUser);
           // Handle successful signup and profile update
@@ -61,10 +63,10 @@ export class SignUpComponent {
       }
     } catch (error) {
       console.error('Error signing up:', error);
-      // Handle exceptions or errors in the signup process
+    
     }
 
-    alert('Verification is sent to your email');
+    this.toastr.success('Verification is sent to your email');
     this.router.navigate(['/login']);
   }
 }

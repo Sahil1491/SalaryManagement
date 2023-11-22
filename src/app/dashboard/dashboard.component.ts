@@ -1,7 +1,10 @@
+// dashboard.component.ts
+
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { EmployeeServiceService } from '../Services/employee-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,13 +29,13 @@ export class DashboardComponent {
 
   constructor(
     private router: Router,
-    private employeeService: EmployeeServiceService
+    private employeeService: EmployeeServiceService,
+    private toastr: ToastrService
   ) {}
 
   isSidenavOpen: boolean = false;
 
   ngOnInit(): void {
-   
     this.employeeService.getAllEmployees().subscribe(
       (data: any[]) => {
         this.employeeData = data;
@@ -50,7 +53,6 @@ export class DashboardComponent {
         console.error('Error fetching months:', error);
       }
     );
-    
   }
 
   toggleSidenav(): void {
@@ -61,16 +63,14 @@ export class DashboardComponent {
   logout() {
     const confirmLogout = confirm("Are you sure you want to log out?");
     if (confirmLogout) {
+      this.toastr.success('Logout Succcessfull');
       this.router.navigate(['/login']);
-
       history.replaceState('', '', '/login');
     }
   }
 
   generateReport() {
- 
     if (this.selectedMonth && this.selectedEmployee.id) {
-    
       this.employeeService.getSalaryData(this.selectedMonth, this.selectedEmployee.id).subscribe(
         (data: any[]) => {
           this.reportData = data;
@@ -82,5 +82,4 @@ export class DashboardComponent {
       );
     }
   }
-  
-}  
+}

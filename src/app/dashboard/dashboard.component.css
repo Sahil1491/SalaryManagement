@@ -141,10 +141,13 @@ th {
   text-align: center;
 }
 
-.logo-image {
-  max-width: 100px;
-  height: 50%;
-}
+
+  .logo-image {
+    width: 150px; /* Adjust the width as needed */
+    height: 70px; 
+  }
+ 
+
 
 .background-image {
  background-image: url('./../../assets/aa_files/banknote-16832_640.jpg');
@@ -155,3 +158,4 @@ th {
   width: 100%;
   z-index: -1;
 }
+
