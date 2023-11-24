@@ -31,6 +31,7 @@ export class LoginComponent {
         this.toastr.error('Invalid Email or Password');
       } else {
         this.toastr.success('Login Successful');
+        localStorage.setItem('token', '12345');
         this.router.navigate(['/dashboard']);
       }
     } catch (error) {

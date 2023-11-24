@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { ToastrModule } from 'ngx-toastr';
+import { authGuard } from './Auth/auth.guard';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [authGuard,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
