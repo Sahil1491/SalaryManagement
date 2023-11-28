@@ -67,6 +67,7 @@ export class DashboardComponent {
       this.router.navigate(['/login']);
       history.replaceState('', '', '/login');
     }
+    localStorage.removeItem('token');
   }
 
   generateReport() {
